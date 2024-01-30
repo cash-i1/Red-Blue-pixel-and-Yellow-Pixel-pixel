@@ -1,47 +1,49 @@
 use std::{cell, process::exit, usize};
 use macroquad::prelude::*;
 
-mod particle;
-mod board;
 const scr_width: f32 = 1000.;
 const scr_height: f32 = 100.;
 
-const cell_size: i32 = 10;
+const cell_size: usize = 10;
 
-const grid_width: i32 = scr_width as i32 / cell_size;
-const grid_height: i32 = scr_height as i32 / cell_size;
+const grid_width: usize = scr_width as usize/ cell_size;
+const grid_height: usize = scr_height as usize / cell_size;
 
+#[derive(Clone, Copy, PartialEq)]
+enum ptype {
+    NONE = 0,
+    RED = 1,
+    BLUE = 2,
+    YELLOW = 3,
+}
 
 #[macroquad::main("RBraYPp")]
 async fn main() {
-    let mut board: Vec<Vec<i32>> = Vec::new();
+    let mut board: Vec<Vec<ptype>> = vec![vec![ptype::NONE; grid_height as usize]; grid_width as usize];
     request_new_screen_size(scr_width, scr_height);
-
-    for _ in 0..screen_width() as i32 {
-        let mut row: Vec<i32> = Vec::new();
-        
-        for i in 0..grid_height {
-            if i % 2 == 1 {
-                row.push(1);
+    
+    // Initializing the array
+    for x in 0..grid_height as usize {
+        for y in 0..grid_height as usize {
+            if y % 2 == 1 {
+                board[x][y] = ptype::RED;
             } else {
-
-                row.push(0);
+                board[x][y] = ptype::NONE;
             }
         }
     }
 
     loop {
-        board.reserve((screen_height() as usize / cell_size as usize) as usize - board.len() as usize); 
         clear_background(BLACK);
        
         if is_mouse_button_down(MouseButton::Left) {
-            board[mouse_position().0 as usize / cell_size as usize][mouse_position().1 as usize / cell_size as usize] = 1;
+            board[mouse_position().0 as usize / cell_size][mouse_position().1 as usize / cell_size] = ptype::RED;
         }
+
         println!("{}", mouse_position().0 as usize / cell_size as usize);
         for row in 0..board.len() {
             for col in 0..board[row].len() {
-                if board[row][col] == 1 {
-
+                if board[row][col] == ptype::RED {
                     draw_rectangle((row * cell_size as usize) as f32, (col * cell_size as usize) as f32, cell_size as f32, cell_size as f32, RED);
                 }
             }
