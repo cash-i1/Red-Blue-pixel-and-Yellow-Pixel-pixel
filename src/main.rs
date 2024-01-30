@@ -1,9 +1,8 @@
 use std::{cell, process::exit, usize};
-
 use macroquad::prelude::*;
 
 mod particle;
-
+mod board;
 const scr_width: f32 = 1000.;
 const scr_height: f32 = 100.;
 
@@ -17,6 +16,7 @@ const grid_height: i32 = scr_height as i32 / cell_size;
 async fn main() {
     let mut board: Vec<Vec<i32>> = Vec::new();
     request_new_screen_size(scr_width, scr_height);
+
     for _ in 0..screen_width() as i32 {
         let mut row: Vec<i32> = Vec::new();
         
@@ -28,7 +28,6 @@ async fn main() {
                 row.push(0);
             }
         }
-        board.push(row);
     }
 
     loop {
