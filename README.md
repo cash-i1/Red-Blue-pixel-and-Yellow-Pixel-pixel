@@ -4,5 +4,4 @@ A funa pixel game that might make you fly
 
 Red Blue pixel and Yellow Pixel pixel is a [cellular automata](https://en.wikipedia.org/wiki/Cellular_automaton) that is based upon Einstuines Theory of Relativity. Go the top left and smash that star button before you die of a.
 
-> [!NOTE]
-> I am not good at rust so this wont be AAA
+This game was originally going to be made in rust but my shit rust skills made me move the rust code i had to a seperate branch: [origin/rust](https://github.com/cash-i1/Red-Blue-pixel-and-Yellow-Pixel-pixel/tree/rust)
