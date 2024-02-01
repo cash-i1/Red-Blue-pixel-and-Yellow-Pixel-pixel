@@ -1,5 +1,6 @@
 #pragma once
 
+#include <raylib.h>
 #include <vector>
 #include "../particles/particle.h"
 #include "../globals.h"
@@ -14,4 +15,5 @@ public:
     void step();
     void leap(int frames); // Step goes forward one frame and leap goes forward a specified amount of frames
     void init();
+    void add_particle_at_pos(Vector2 pos, Particle p);
 };

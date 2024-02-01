@@ -12,6 +12,9 @@ int main() {
     Grid grid = Grid();
     grid.init();
     while (!WindowShouldClose()) {
+        Particle sample_p = Particle();
+        sample_p.col = BLUE;
+        grid.add_particle_at_pos(Vector2{GetMouseX()/(float)cell_size, GetMouseY()/(float)cell_size}, sample_p);
         BeginDrawing();
             grid.draw();
         EndDrawing();

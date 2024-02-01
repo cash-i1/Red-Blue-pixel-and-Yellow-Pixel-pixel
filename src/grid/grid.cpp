@@ -14,10 +14,8 @@ void Grid::init() {
             Particle p = Particle();
             p.col = RED;
             p.pos = Vector2{(float)x, (float)y};
-            std::cout << p.col.a;
             row.push_back(p);
         }
-        std::cout << std::endl;
         vec.push_back(row);
     }
 }
@@ -29,3 +27,9 @@ void Grid::draw() {
         }
     }
 }
+
+void Grid::add_particle_at_pos(Vector2 pos, Particle p) {
+    p.pos = Vector2{pos.x, pos.y};
+    vec[pos.x][pos.y] = p;
+}
+

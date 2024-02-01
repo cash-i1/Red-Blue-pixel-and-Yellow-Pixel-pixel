@@ -6,6 +6,5 @@
 Particle::Particle() {};
 
 void Particle::draw() {
-    std::cout << "SDF" << std::endl;
-    DrawRectangle(pos.x, pos.y, cell_size, cell_size, col);
+    DrawRectangle(pos.x * cell_size, pos.y * cell_size, cell_size, cell_size, col);
 }
