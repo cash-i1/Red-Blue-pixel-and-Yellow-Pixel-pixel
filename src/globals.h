@@ -1,7 +1,7 @@
 #pragma once
 
-const int scr_width = 100;
-const int scr_height = 100;
+const int scr_width = 1280;
+const int scr_height = 720;
 
 const int cell_size = 10;
 
