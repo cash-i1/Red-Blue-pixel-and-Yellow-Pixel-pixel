@@ -42,12 +42,16 @@ void Grid::add_particle(Particle p) {
 }
 
 void Grid::try_add_particle(Particle p) {
-    // TODO: Make it so it will only place particle when there isnt a particle already there that isnt nothing paricle
+    // TODO: Make it so it will only place particle when there isnt a particle already there that isnt nothing paricle;
     Grid::add_particle(p);
 }
 
 void Grid::step() {
-
+    for (int x = 0; x < GetScreenWidth() / cell_size; x++) {
+        for (int y = 0; y < GetScreenHeight() / cell_size; y++) {
+            vec[x][y].step();
+        }
+    }
 }
 
 void Grid::reinit() {

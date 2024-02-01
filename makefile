@@ -8,7 +8,7 @@ run: $(name)
 	$(name)
 
 $(name): $(files)
-	clang++ -o $@ $(files) $(args)
+	clang++ -d -o $@ $(files) $(args)
 
 clean:
 	rm -rf $(name)
