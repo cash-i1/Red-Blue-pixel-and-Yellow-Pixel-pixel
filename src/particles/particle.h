@@ -3,10 +3,10 @@
 
 class Particle {
 public:
-    Particle();
+    Particle(Color col = Color{0, 0, 0, 0}) : col(col) {} // it doesnt work when i do it here
 
     Vector2 pos;
-    Color col;
+    Color col; // I want this to default to 0,0,0,0
 
     void draw();
     void step();

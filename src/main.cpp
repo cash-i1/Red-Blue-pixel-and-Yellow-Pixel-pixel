@@ -7,6 +7,7 @@
 #include "grid/grid.h"
 
 int main() {
+    SetConfigFlags(FLAG_WINDOW_RESIZABLE);
     InitWindow(scr_width, scr_height, "Red Blue pixel and Yellow Pixel pixel");
 
     Grid grid = Grid();
@@ -14,7 +15,12 @@ int main() {
     while (!WindowShouldClose()) {
         Particle sample_p = Particle();
         sample_p.col = BLUE;
-        grid.add_particle_at_pos(Vector2{GetMouseX()/(float)cell_size, GetMouseY()/(float)cell_size}, sample_p);
+        sample_p.pos = Vector2 {
+            (float)((int)GetMouseX()/(int)cell_size), //Please forgive me programming gods 🙏
+            (float)((int)GetMouseY()/(int)cell_size)
+        };
+
+        grid.try_add_particle(sample_p);
         BeginDrawing();
             grid.draw();
         EndDrawing();
