@@ -10,12 +10,10 @@ int main() {
     InitWindow(scr_width, scr_height, "Red Blue pixel and Yellow Pixel pixel");
 
     Grid grid = Grid();
-
+    grid.init();
     while (!WindowShouldClose()) {
-        for (int x = 0; x < grid_width; x++) {
-            for (int y = 0; y < grid_height; y++) {
-                // grid.vec[x][y].draw();
-            }
-        }
+        BeginDrawing();
+            grid.draw();
+        EndDrawing();
     }
 }
