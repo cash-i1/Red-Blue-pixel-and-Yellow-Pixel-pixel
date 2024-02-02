@@ -13,29 +13,44 @@ int main() {
 
     Grid grid = Grid();
     grid.init();
-
-    RedParticle sample_p;
-    sample_p.pos = Vector2 {20,20};
-    bool test = false;
-    grid.try_add_particle(sample_p);
+    
+    Particle::Type selected_particle;
 
     while (!WindowShouldClose()) {
         ClearBackground(BLACK);
-        // sample_p.col = BLUE;
-        // sample_p.pos = Vector2 {
-        //     (float)((int)GetMouseX()/(int)cell_size), //Please forgive me programming gods 🙏
-        //     (float)((int)GetMouseY()/(int)cell_size)
-        // };
-        // grid.step();
-        if (test == false) {
-            test = true;
-        }
 
-        // std::cout << sample_p.pos.y << std::endl;
+        if (IsKeyPressed(KEY_Q)) {
+            selected_particle = Particle::RED_P;
+            std::cout << "selected red\n";
+        } 
+        if (IsKeyPressed(KEY_W)) {
+            selected_particle = Particle::BLUE_P;
+            std::cout << "selected blue\n";
+        } 
+
+        if (IsKeyPressed(KEY_E)) {
+            selected_particle = Particle::YELLOW_P;
+            std::cout << "selected yellow\n";
+        } 
+        
+        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+            Particle p;
+            // p.pos.x = GetMouseX() / cell_size;
+            // p.pos.y = GetMouseY() / cell_size;
+            p.pos = Vector2 {
+                (float)((int)GetMouseX()/(int)cell_size), //Please forgive me programming gods 🙏
+                (float)((int)GetMouseY()/(int)cell_size)
+            };
+            p.type = selected_particle;
+            p.col = RED;
+            grid.try_add_particle(p);
+            std::cout << "added particle\n"; 
+        }
+        
+        grid.step();
         BeginDrawing();
             grid.draw();
         EndDrawing();
-        grid.step();
 
     }
 }
