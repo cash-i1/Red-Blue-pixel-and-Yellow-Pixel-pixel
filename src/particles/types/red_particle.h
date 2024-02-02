@@ -5,7 +5,8 @@ class RedParticle : public Particle {
 public:
     RedParticle() {
         col = RED;
+        type = RED_P;
     }
 
-    void step() override;
+    void step();
 };

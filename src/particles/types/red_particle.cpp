@@ -1,6 +1,8 @@
 #include "red_particle.h"
 #include "../../globals.h"
+#include <iostream>
 
 void RedParticle::step() {
-    pos.y -= 1 * cell_size;
+    std::cout << "working\n"; 
+    pos.y -= 1;
 }

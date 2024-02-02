@@ -14,25 +14,28 @@ int main() {
     Grid grid = Grid();
     grid.init();
 
-    RedParticle sample_p = RedParticle();
+    RedParticle sample_p;
     sample_p.pos = Vector2 {20,20};
     bool test = false;
+    grid.try_add_particle(sample_p);
+
     while (!WindowShouldClose()) {
+        ClearBackground(BLACK);
         // sample_p.col = BLUE;
         // sample_p.pos = Vector2 {
         //     (float)((int)GetMouseX()/(int)cell_size), //Please forgive me programming gods 🙏
         //     (float)((int)GetMouseY()/(int)cell_size)
         // };
         // grid.step();
-        sample_p.step();
         if (test == false) {
             test = true;
-            grid.try_add_particle(sample_p);
         }
 
-        std::cout << sample_p.pos.y << std::endl;
+        // std::cout << sample_p.pos.y << std::endl;
         BeginDrawing();
             grid.draw();
         EndDrawing();
+        grid.step();
+
     }
 }
