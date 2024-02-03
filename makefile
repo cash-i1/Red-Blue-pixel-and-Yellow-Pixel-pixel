@@ -4,15 +4,15 @@ debug=false
 
 files=$(shell find $(SRC_DIR) -name "*.cpp")
 
-ifeq ($(DEBUG),true)
-    CFLAGS += -d
+ifeq ($(debug),true)
+    args += -d
 endif
 
 run: $(name)
 	$(name)
 
 $(name): $(files)
-	clang++ -d -o $@ $(files) $(args)
+	clang++ -o $@ $(files) $(args)
 
 clean:
 	rm -rf $(name)

@@ -21,7 +21,7 @@ public:
     Vector2 pos;
     Type type;
     int id;
-
+    
     void draw();
     void step();
     void leap(int frames); // Step goes forward one frame and leap goes forward a specified amount of frames

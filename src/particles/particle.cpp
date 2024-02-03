@@ -3,6 +3,7 @@
 #include <raylib.h>
 #include <string>
 #include "../globals.h"
+#include "../grid/grid.h"
 
 void Particle::draw() {
     // std::cout << "drawing at " << pos.y << "\n";
@@ -14,14 +15,15 @@ void Particle::step() {
 
     switch (type) {
         case RED_P:
-            pos.y -= 0.001;
+            pos.y -= 1 * cell_size;
             // std::cout << result << std::endl;
             break;
         case BLUE_P:
-            pos.y -= 0.001;
+            pos.y += 1 * cell_size;
             break;
         case YELLOW_P:
-            pos.x += 0.01;
+            pos.x += (int)(0.09 * cell_size);
+            
             break;
         default:
             break;

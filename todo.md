@@ -8,5 +8,5 @@
 
 ### TODO
 - mkae it so the default color in all of the different particle type classes actually work
-
+- i really need to get step function to work but i just cant
 

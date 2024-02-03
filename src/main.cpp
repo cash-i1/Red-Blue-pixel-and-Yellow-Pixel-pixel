@@ -62,7 +62,7 @@ int main() {
                 };
                 grid.try_add_particle(p, true);
                 std::cout << "added particle (t: " << selected_particle << ", id: " << p.id << ")\n";
-            }
+            }//
         }
         if (!IsKeyDown(KEY_SPACE))
         grid.step();

@@ -3,9 +3,10 @@
 #include "raylib.h"
 #include <vector>
 #include <iostream>
-Grid::Grid() {
-    
-} 
+#include "../globals.h"
+#include "../particles/types/all_types.h"
+
+Grid::Grid() {}
 
 void Grid::init() {
     for (int x = 0; x < grid_width; x++) {
@@ -23,8 +24,8 @@ void Grid::draw() {
     if (IsWindowResized()) {
         Grid::reinit();
     } else {
-        for (int x = 0; x < GetScreenWidth() / cell_size; x++) {
-            for (int y = 0; y < GetScreenHeight() / cell_size; y++) {
+        for (int x = 0; x < GetScreenWidth()  / cell_size; x++) {
+            for (int y = 0; y < GetScreenHeight()  / cell_size; y++) {
                 vec[x][y].draw();
             }
         }
@@ -42,7 +43,8 @@ void Grid::add_particle(Particle p, bool replace) {
         for (int x = 0; x < vec.size(); x++) {
             for (int y = 0; y < vec[x].size(); y++) {
                 if (vec[x][y].type == p.type) {
-                    vec[x][y] = Particle();
+                    std::cout << "deleted particle (t:" << vec[x][y].type << ", id: " << vec[x][y].id << ")" <<  std::endl;
+                    vec[x][y] = NothingParticle();
                 }
             }
         }
