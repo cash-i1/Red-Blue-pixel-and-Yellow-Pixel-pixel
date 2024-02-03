@@ -5,7 +5,8 @@
 #include "globals.h"
 #include "particles/particle.h"
 #include "grid/grid.h"
-#include "particles/types/red_particle.h"
+// #include "particles/types/red_particle.h"
+#include "particles/types/all_types.h"
 
 int main() {
     SetConfigFlags(FLAG_WINDOW_RESIZABLE);
@@ -34,17 +35,34 @@ int main() {
         } 
         
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
-            Particle p;
-            // p.pos.x = GetMouseX() / cell_size;
-            // p.pos.y = GetMouseY() / cell_size;
-            p.pos = Vector2 {
-                (float)((int)GetMouseX()/(int)cell_size), //Please forgive me programming gods 🙏
-                (float)((int)GetMouseY()/(int)cell_size)
-            };
-            p.type = selected_particle;
-            p.col = RED;
-            grid.try_add_particle(p);
-            std::cout << "added particle\n"; 
+
+            if (selected_particle == Particle::RED_P) {
+                RedParticle p;    //this is 
+                p.pos = Vector2 {
+                    (float)((int)GetMouseX()/(int)cell_size), //Please forgive me programming gods 🙏
+                    (float)((int)GetMouseY()/(int)cell_size)
+                };
+                grid.try_add_particle(p, true);
+                std::cout << "added particle (t: " << selected_particle << ", id: " << p.id << ")\n";
+            }
+            if (selected_particle == Particle::BLUE_P) {
+                BlueParticle p;    //this is 
+                p.pos = Vector2 {
+                    (float)((int)GetMouseX()/(int)cell_size), //Please forgive me programming gods 🙏
+                    (float)((int)GetMouseY()/(int)cell_size)
+                };
+                grid.try_add_particle(p, true);
+                std::cout << "added particle (t: " << selected_particle << ", id: " << p.id << ")\n";
+            }
+            if (selected_particle == Particle::YELLOW_P) {
+                YellowParticle p;    //this is 
+                p.pos = Vector2 {
+                    (float)((int)GetMouseX()/(int)cell_size), //Please forgive me programming gods 🙏
+                    (float)((int)GetMouseY()/(int)cell_size)
+                };
+                grid.try_add_particle(p, true);
+                std::cout << "added particle (t: " << selected_particle << ", id: " << p.id << ")\n";
+            }
         }
         
         grid.step();

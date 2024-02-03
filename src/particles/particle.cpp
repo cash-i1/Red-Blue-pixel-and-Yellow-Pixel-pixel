@@ -10,12 +10,12 @@ void Particle::draw() {
 }
 
 void Particle::step() {
-    std::string result = "Color(" + std::to_string(col.r) + ", " + std::to_string(col.g) + ", " + std::to_string(col.b) + ", " + std::to_string(col.a) + ")";
+    // std::string result = "Color(" + std::to_string(col.r) + ", " + std::to_string(col.g) + ", " + std::to_string(col.b) + ", " + std::to_string(col.a) + ")";
 
     switch (type) {
         case RED_P:
             pos.y -= 0.001;
-            std::cout << result << std::endl;
+            // std::cout << result << std::endl;
             break;
         case BLUE_P:
             pos.y -= 0.001;

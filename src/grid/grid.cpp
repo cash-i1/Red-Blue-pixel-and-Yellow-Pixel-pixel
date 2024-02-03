@@ -37,19 +37,36 @@ void Grid::add_particle_at_pos(Vector2 pos, Particle p) {
     vec[pos.x][pos.y] = p;
 }
 
-void Grid::add_particle(Particle p) {
+void Grid::add_particle(Particle p, bool replace) {
+    if (replace) {
+        for (int x = 0; x < vec.size() / cell_size; x++) {
+            for (int y = 0; y < vec[x].size() / cell_size; y++) {
+                if (vec[x][y].type == p.type) {
+                    vec[x][y] = Particle();
+                }
+            }
+        }
+    }
     vec[p.pos.x][p.pos.y] = p;
 }
 
-void Grid::try_add_particle(Particle p) {
+void Grid::try_add_particle(Particle p, bool replace) {
     // TODO: Make it so it will only place particle when there isnt a particle already there that isnt nothing paricle;
-    Grid::add_particle(p);
+    Grid::add_particle(p, replace);
 }
 
 void Grid::step() {
     for (int x = 0; x < GetScreenWidth() / cell_size; x++) {
         for (int y = 0; y < GetScreenHeight() / cell_size; y++) {
-            vec[x][y].step();
+            Particle* p = &vec[x][y];
+            
+            vec[p->pos.x][p->pos.y] = *p;
+            if (p->pos.x != x && p->pos.y != y) {
+
+                vec[x][y] = Particle();
+            }
+
+            p->step();
         }
     }
 }
@@ -63,7 +80,7 @@ void Grid::reinit() {
             vec[x].resize(GetScreenHeight(), Particle()); // Fill new elements with default Particle values
         }
         for (int y = 0; y < GetScreenHeight(); y++) {
-            vec[x][y].pos = Vector2{(float)x, (float)y};
+            // vec[x][y].pos = Vector2{(float)x, (float)y};
         }
     }
 }

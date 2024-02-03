@@ -1,10 +1,14 @@
 #pragma once
+#include <cstdlib>
 #include <raylib.h>
 
 class Particle {
 public:
+    Color col; 
+
     Particle() {
         col = Color{0, 0, 0, 0};
+        id = rand();
     } // it doesnt work when i do it here
     
     enum Type {
@@ -15,8 +19,8 @@ public:
     };
 
     Vector2 pos;
-    Color col; // I want this to default to 0,0,0,0
-    Type type; 
+    Type type;
+    int id;
 
     void draw();
     void step();
