@@ -4,5 +4,5 @@
 
 void YellowParticle::step() {
     std::cout << "working\n"; 
-    pos.y -= 1;
+    pos.y -= 10;
 }

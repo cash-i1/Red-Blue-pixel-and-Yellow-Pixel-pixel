@@ -9,7 +9,7 @@
 #include "particles/types/all_types.h"
 
 int main() {
-    SetConfigFlags(FLAG_WINDOW_RESIZABLE);
+    // SetConfigFlags(FLAG_WINDOW_RESIZABLE);
     InitWindow(scr_width, scr_height, "Red Blue pixel and Yellow Pixel pixel");
 
     Grid grid = Grid();
@@ -48,7 +48,7 @@ int main() {
             if (selected_particle == Particle::BLUE_P) {
                 BlueParticle p;    //this is 
                 p.pos = Vector2 {
-                    (float)((int)GetMouseX()/(int)cell_size), //Please forgive me programming gods 🙏
+                    (float)((int)GetMouseX()/(int)cell_size), 
                     (float)((int)GetMouseY()/(int)cell_size)
                 };
                 grid.try_add_particle(p, true);
@@ -57,14 +57,14 @@ int main() {
             if (selected_particle == Particle::YELLOW_P) {
                 YellowParticle p;    //this is 
                 p.pos = Vector2 {
-                    (float)((int)GetMouseX()/(int)cell_size), //Please forgive me programming gods 🙏
+                    (float)((int)GetMouseX()/(int)cell_size), 
                     (float)((int)GetMouseY()/(int)cell_size)
                 };
                 grid.try_add_particle(p, true);
                 std::cout << "added particle (t: " << selected_particle << ", id: " << p.id << ")\n";
             }
         }
-        
+        if (!IsKeyDown(KEY_SPACE))
         grid.step();
         BeginDrawing();
             grid.draw();

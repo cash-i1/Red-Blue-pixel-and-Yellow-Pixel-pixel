@@ -4,5 +4,5 @@
 
 void BlueParticle::step() {
     std::cout << "working\n"; 
-    pos.y -= 1;
+    pos.y -= cell_size;
 }

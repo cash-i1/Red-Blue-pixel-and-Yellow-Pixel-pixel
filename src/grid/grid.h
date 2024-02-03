@@ -19,4 +19,6 @@ public:
     void add_particle_at_pos(Vector2 pos, Particle p);
     void add_particle(Particle p, bool replace);
     void try_add_particle(Particle p, bool replace); // if particle exists in location, it will do notihng
+
+    bool can_move(Particle p);
 };
